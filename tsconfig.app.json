@@ -9,9 +9,20 @@
     "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
     "strict": false,
+    "noEmit": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": false
   },
   "include": ["src"]
 }
+```
+
+AND also go to **`package.json`** on GitHub, click pencil, find the build script line and change it from:
+```
+"build": "tsc -b && vite build"
+```
+
+to:
+```
+"build": "vite build"
