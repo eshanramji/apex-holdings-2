@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const CONFIG = {
-  bootcampStart: new Date("2025-07-14T09:00:00"),
+  bootcampStart: new Date("2026-07-14T09:00:00"),
   seatsTotal: 30, seatsTaken: 7,
   email: "eshanramji@gmail.com", phone: "778-227-1710",
   prices: { deposit: 50, family: 599, couple: 629, individual: 459 },
@@ -84,20 +84,20 @@ const css = `
   h4{font-size:16px;font-weight:600;letter-spacing:-.3px;color:#fff}
   p{line-height:1.76;color:#aeaeb2}
   em{font-style:normal;color:#e8e8ed}
-  .lbl{font-size:10px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:#555}
+  .lbl{font-size:10px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:#888}
   .tag{display:inline-block;background:rgba(255,255,255,.04);color:#c8c8cc;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:980px;border:1px solid rgba(255,255,255,.09)}
   .gtag{display:inline-block;background:${GD};color:${G};font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:980px;border:1px solid ${GB}}
   .sh{background:linear-gradient(90deg,#fff 0%,#555 38%,#fff 55%,#555 100%);background-size:400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 8s ease-in-out infinite}
 
   .fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
-  .fg label{font-size:10px;font-weight:600;letter-spacing:1.2px;color:#555;text-transform:uppercase}
+  .fg label{font-size:10px;font-weight:600;letter-spacing:1.2px;color:#888;text-transform:uppercase}
   .fg input,.fg textarea,.fg select{background:#070707;border:1px solid #181818;color:#fff;padding:13px 16px;border-radius:12px;font-size:14px;transition:border .25s,background .2s}
   .fg input:focus,.fg textarea:focus,.fg select:focus{border-color:rgba(255,255,255,.28);background:#0d0d0d}
   .fg select option{background:#070707}
 
   .ai{border-bottom:1px solid #0d0d0d}
   .ah{display:flex;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer}
-  .at{font-size:15px;font-weight:500;color:#666;transition:color .25s;letter-spacing:-.3px}
+  .at{font-size:15px;font-weight:500;color:#aaa;transition:color .25s;letter-spacing:-.3px}
   .ah:hover .at{color:#fff}
   .ab{max-height:0;overflow:hidden;transition:max-height .65s cubic-bezier(.16,1,.3,1)}
   .ab.open{max-height:600px}
@@ -106,7 +106,7 @@ const css = `
 
   .tick{overflow:hidden;border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a;padding:14px 0}
   .ti{display:flex;width:max-content;animation:ticker 44s linear infinite}
-  .titem{white-space:nowrap;padding:0 36px;font-size:10px;font-weight:500;color:#252525;letter-spacing:1.2px;border-right:1px solid #0a0a0a}
+  .titem{white-space:nowrap;padding:0 36px;font-size:10px;font-weight:500;color:#555;letter-spacing:1.2px;border-right:1px solid #0a0a0a}
 
   .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);background-size:88px 88px}
 
@@ -117,7 +117,6 @@ const css = `
   @media(max-width:760px){h1{letter-spacing:-2px}.sec{padding:76px 0}}
 `;
 
-/* ── LOGO ── */
 function Pyr({ size = 28, animated = false }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none"
@@ -168,7 +167,6 @@ function PyramidSVG({ size = 280 }) {
   );
 }
 
-/* ── CHARTS ── */
 function FullChart({ data, color = G, h = 130 }) {
   const ref = useRef(null);
   const [drawn, setDrawn] = useState(false);
@@ -227,7 +225,6 @@ function HeroChart() {
   );
 }
 
-/* ── COUNTER ── */
 function Counter({ end, prefix = "", suffix = "", decimals = 0 }) {
   const [val, setVal] = useState(0); const ref = useRef(null);
   useEffect(() => {
@@ -240,7 +237,6 @@ function Counter({ end, prefix = "", suffix = "", decimals = 0 }) {
   return <span ref={ref} style={{ animation: "numberIn .5s ease both" }}>{prefix}{fmt(val)}{suffix}</span>;
 }
 
-/* ── COUNTDOWN ── */
 function Countdown() {
   const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
   useEffect(() => {
@@ -249,12 +245,11 @@ function Countdown() {
   }, []);
   return (
     <div style={{ display: "inline-flex", gap: 18, alignItems: "center", background: "rgba(255,255,255,.025)", border: "1px solid rgba(255,255,255,.07)", borderRadius: 18, padding: "18px 30px" }}>
-      {[["d","Days"],["h","Hrs"],["m","Min"],["s","Sec"]].reduce((acc,[k,l],i)=>[...acc,...(i>0?[<span key={`s${i}`} style={{color:"#181818",fontSize:22}}>:</span>]:[]),<div key={k} style={{textAlign:"center",minWidth:46}}><div style={{fontSize:"clamp(22px,4vw,38px)",fontWeight:700,color:"#fff",lineHeight:1,fontVariantNumeric:"tabular-nums",transition:"all .3s"}}>{String(t[k]).padStart(2,"0")}</div><div style={{fontSize:9,letterSpacing:1.8,color:"#383838",textTransform:"uppercase",marginTop:5}}>{l}</div></div>],[])}
+      {[["d","Days"],["h","Hrs"],["m","Min"],["s","Sec"]].reduce((acc,[k,l],i)=>[...acc,...(i>0?[<span key={`s${i}`} style={{color:"#333",fontSize:22}}>:</span>]:[]),<div key={k} style={{textAlign:"center",minWidth:46}}><div style={{fontSize:"clamp(22px,4vw,38px)",fontWeight:700,color:"#fff",lineHeight:1,fontVariantNumeric:"tabular-nums",transition:"all .3s"}}>{String(t[k]).padStart(2,"0")}</div><div style={{fontSize:9,letterSpacing:1.8,color:"#888",textTransform:"uppercase",marginTop:5}}>{l}</div></div>],[])}
     </div>
   );
 }
 
-/* ── LOADER ── */
 function Loader({ onDone }) {
   const canvasRef = useRef(null);
   const [phase, setPhase] = useState(0);
@@ -298,8 +293,8 @@ function Loader({ onDone }) {
           ))}
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5 }}>
-          <span style={{ fontSize: 12, letterSpacing: 4, color: "#666", textTransform: "uppercase", fontWeight: 500 }}>Apex Holdings</span>
-          <span style={{ fontSize: 9, letterSpacing: 3, color: "#1e1e1e", textTransform: "uppercase" }}>Est. 2025</span>
+          <span style={{ fontSize: 12, letterSpacing: 4, color: "#aaa", textTransform: "uppercase", fontWeight: 500 }}>Apex Holdings</span>
+          <span style={{ fontSize: 9, letterSpacing: 3, color: "#444", textTransform: "uppercase" }}>Est. 2025</span>
         </div>
         {phase >= 2 && (
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
@@ -360,7 +355,6 @@ function useReveal() {
   });
 }
 
-/* ── NAV ── */
 function Header({ page, nav }) {
   const [mob, setMob] = useState(false);
   const links = [["Examples","examples"],["Program","program"],["Mission","mission"],["About","about"],["Pricing","pricing"],["FAQ","faq"]];
@@ -373,7 +367,7 @@ function Header({ page, nav }) {
         </div>
         <div style={{ display: "flex", alignItems: "center" }} id="dn">
           {links.map(([l, p]) => (
-            <button key={p} onClick={() => go(p)} style={{ background: "none", border: "none", color: page === p ? "#fff" : "#3a3a3a", fontWeight: 500, fontSize: 13, padding: "7px 12px", borderRadius: 8, transition: "color .2s" }}>{l}</button>
+            <button key={p} onClick={() => go(p)} style={{ background: "none", border: "none", color: page === p ? "#fff" : "#888", fontWeight: 500, fontSize: 13, padding: "7px 12px", borderRadius: 8, transition: "color .2s" }}>{l}</button>
           ))}
           <button className="bgn" onClick={() => go("intake")} style={{ padding: "8px 20px", fontSize: 13, marginLeft: 8 }}>Reserve Spot</button>
         </div>
@@ -381,7 +375,7 @@ function Header({ page, nav }) {
         <style>{`@media(max-width:760px){#dn{display:none!important}#hb{display:block!important}}`}</style>
       </div>
       {mob && (<div style={{ background: "rgba(0,0,0,.97)", borderTop: "1px solid #0a0a0a", padding: "14px 28px 22px" }}>
-        {links.map(([l, p]) => <button key={p} onClick={() => go(p)} style={{ display: "block", width: "100%", textAlign: "left", background: "none", border: "none", color: page === p ? "#fff" : "#444", fontSize: 16, fontWeight: 500, padding: "11px 0" }}>{l}</button>)}
+        {links.map(([l, p]) => <button key={p} onClick={() => go(p)} style={{ display: "block", width: "100%", textAlign: "left", background: "none", border: "none", color: page === p ? "#fff" : "#888", fontSize: 16, fontWeight: 500, padding: "11px 0" }}>{l}</button>)}
         <button className="bgn" onClick={() => go("intake")} style={{ width: "100%", padding: "12px", marginTop: 10 }}>Reserve Spot</button>
       </div>)}
     </nav>
@@ -395,32 +389,29 @@ function Footer({ nav }) {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 36, marginBottom: 52 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 16 }}><Pyr size={22} /><span style={{ fontWeight: 700, fontSize: 14, color: "#fff" }}>Apex Holdings</span></div>
-            <p style={{ fontSize: 13, maxWidth: 180, lineHeight: 1.75, color: "#2e2e2e" }}>Building generational wealth — one system at a time.</p>
+            <p style={{ fontSize: 13, maxWidth: 180, lineHeight: 1.75, color: "#888" }}>Building generational wealth — one system at a time.</p>
           </div>
           {[["Navigate",[["Home","home"],["Examples","examples"],["Program","program"],["Mission","mission"],["About","about"],["Pricing","pricing"],["FAQ","faq"],["Contact","contact"]]],
           ["Contact",[[CONFIG.email],[CONFIG.phone],["Instagram (Soon)"],["LinkedIn (Soon)"]]],
           ["Legal",[["Education only"],["Not financial advice"],["No guarantees"],["Not SEC/IIROC registered"]]]].map(([title,items])=>(
             <div key={title}>
-              <div className="lbl" style={{ marginBottom: 14, color: "#2a2a2a" }}>{title}</div>
+              <div className="lbl" style={{ marginBottom: 14 }}>{title}</div>
               {items.map(([l, p], i) => (
-                <div key={i} onClick={p ? () => nav(p) : undefined} style={{ color: "#252525", fontSize: 13, marginBottom: 9, cursor: p ? "pointer" : "default", transition: "color .2s" }}
-                  onMouseEnter={e => { if (p) e.target.style.color = "#888"; }} onMouseLeave={e => { e.target.style.color = "#252525"; }}>{l}</div>
+                <div key={i} onClick={p ? () => nav(p) : undefined} style={{ color: "#666", fontSize: 13, marginBottom: 9, cursor: p ? "pointer" : "default", transition: "color .2s" }}
+                  onMouseEnter={e => { if (p) e.target.style.color = "#fff"; }} onMouseLeave={e => { e.target.style.color = "#666"; }}>{l}</div>
               ))}
             </div>
           ))}
         </div>
         <div style={{ borderTop: "1px solid #0a0a0a", paddingTop: 20, display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "space-between" }}>
-          <p style={{ fontSize: 12, color: "#252525" }}>© 2025 Apex Holdings. All rights reserved.</p>
-          <p style={{ fontSize: 11, color: "#1a1a1a" }}>Educational program. Not registered investment advice. Canada & United States.</p>
+          <p style={{ fontSize: 12, color: "#555" }}>© 2025 Apex Holdings. All rights reserved.</p>
+          <p style={{ fontSize: 11, color: "#444" }}>Educational program. Not registered investment advice. Canada & United States.</p>
         </div>
       </div>
     </footer>
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   DATA
-══════════════════════════════════════════════════════════ */
 const SCENARIOS = [{ label: "$200/mo", monthly: 200 }, { label: "$400/mo", monthly: 400 }, { label: "$600/mo", monthly: 600 }];
 
 const INDEX_DATA = [
@@ -455,7 +446,6 @@ function fmtVal(v) {
   return `$${v.toLocaleString()}`;
 }
 
-/* ── INDEX CARD ── */
 function IndexCard({ idx }) {
   const [sel, setSel] = useState(1);
   const sc = idx.returns[sel];
@@ -469,33 +459,29 @@ function IndexCard({ idx }) {
         </div>
         <div style={{ background: GD, border: `1px solid ${GB}`, borderRadius: 100, padding: "3px 11px", fontSize: 11, color: G, fontWeight: 600, whiteSpace: "nowrap" }}>~{idx.cagr}%/yr</div>
       </div>
-      <p style={{ fontSize: 12, color: "#383838", marginBottom: 18, lineHeight: 1.7 }}>{idx.desc}</p>
-
+      <p style={{ fontSize: 12, color: "#888", marginBottom: 18, lineHeight: 1.7 }}>{idx.desc}</p>
       <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
         {SCENARIOS.map((s, i) => (
-          <button key={i} onClick={() => setSel(i)} style={{ flex: 1, fontSize: 11, padding: "8px 0", borderRadius: 9, border: `1px solid ${sel === i ? GB : "#141414"}`, background: sel === i ? GD : "transparent", color: sel === i ? G : "#333", cursor: "pointer", fontWeight: sel === i ? 600 : 400, transition: "all .25s", letterSpacing: .3 }}>{s.label}</button>
+          <button key={i} onClick={() => setSel(i)} style={{ flex: 1, fontSize: 11, padding: "8px 0", borderRadius: 9, border: `1px solid ${sel === i ? GB : "#141414"}`, background: sel === i ? GD : "transparent", color: sel === i ? G : "#aaa", cursor: "pointer", fontWeight: sel === i ? 600 : 400, transition: "all .25s", letterSpacing: .3 }}>{s.label}</button>
         ))}
       </div>
-
       <div style={{ background: "#040404", border: "1px solid #0e0e0e", borderRadius: 12, padding: "14px 14px 10px", marginBottom: 16, overflow: "hidden" }}>
-        <div className="lbl" style={{ marginBottom: 10, color: "#282828" }}>15-Year Growth · Illustrative</div>
+        <div className="lbl" style={{ marginBottom: 10 }}>15-Year Growth · Illustrative</div>
         <FullChart data={idx.charts[sel]} />
       </div>
-
       <div>
-        <div className="lbl" style={{ marginBottom: 6, color: "#282828" }}>{SCENARIOS[sel].label} over 15 years</div>
+        <div className="lbl" style={{ marginBottom: 6 }}>{SCENARIOS[sel].label} over 15 years</div>
         <div style={{ fontSize: 32, fontWeight: 700, color: "#fff", letterSpacing: -1.5, marginBottom: 5 }}>{fmtVal(sc.end)}</div>
         <div style={{ display: "flex", gap: 12 }}>
           <span style={{ fontSize: 11, color: G, fontWeight: 600 }}>+{gain}% total</span>
-          <span style={{ fontSize: 11, color: "#282828" }}>${sc.invested.toLocaleString()} contributed</span>
+          <span style={{ fontSize: 11, color: "#888" }}>${sc.invested.toLocaleString()} contributed</span>
         </div>
       </div>
-      <div style={{ marginTop: 16, paddingTop: 12, borderTop: "1px solid #0a0a0a", fontSize: 10, color: "#1e1e1e", lineHeight: 1.6, letterSpacing: .3 }}>Illustrative only. Past returns do not guarantee future results.</div>
+      <div style={{ marginTop: 16, paddingTop: 12, borderTop: "1px solid #0a0a0a", fontSize: 10, color: "#666", lineHeight: 1.6, letterSpacing: .3 }}>Illustrative only. Past returns do not guarantee future results.</div>
     </div>
   );
 }
 
-/* ── STOCK CARD ── */
 function StockCard({ s }) {
   const [sel, setSel] = useState(1);
   const sc = s.returns[sel];
@@ -511,36 +497,29 @@ function StockCard({ s }) {
         </div>
         <div style={{ background: s.outlier ? "rgba(244,162,41,.08)" : GD, border: `1px solid ${s.outlier ? "rgba(244,162,41,.2)" : GB}`, borderRadius: 100, padding: "3px 11px", fontSize: 11, color, fontWeight: 600 }}>~{s.cagr}%/yr</div>
       </div>
-
       <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
         {SCENARIOS.map((sc2, i) => (
-          <button key={i} onClick={() => setSel(i)} style={{ flex: 1, fontSize: 11, padding: "8px 0", borderRadius: 9, border: `1px solid ${sel === i ? GB : "#141414"}`, background: sel === i ? GD : "transparent", color: sel === i ? G : "#333", cursor: "pointer", fontWeight: sel === i ? 600 : 400, transition: "all .25s" }}>{sc2.label}</button>
+          <button key={i} onClick={() => setSel(i)} style={{ flex: 1, fontSize: 11, padding: "8px 0", borderRadius: 9, border: `1px solid ${sel === i ? GB : "#141414"}`, background: sel === i ? GD : "transparent", color: sel === i ? G : "#aaa", cursor: "pointer", fontWeight: sel === i ? 600 : 400, transition: "all .25s" }}>{sc2.label}</button>
         ))}
       </div>
-
       <div style={{ background: "#040404", border: "1px solid #0e0e0e", borderRadius: 12, padding: "14px 14px 10px", marginBottom: 16, overflow: "hidden" }}>
-        <div className="lbl" style={{ marginBottom: 10, color: "#282828" }}>15-Year Growth · Illustrative</div>
+        <div className="lbl" style={{ marginBottom: 10 }}>15-Year Growth · Illustrative</div>
         <FullChart data={chartData[sel]} color={color} />
       </div>
-
       <div>
-        <div className="lbl" style={{ marginBottom: 6, color: "#282828" }}>{SCENARIOS[sel].label} over 15 years</div>
+        <div className="lbl" style={{ marginBottom: 6 }}>{SCENARIOS[sel].label} over 15 years</div>
         <div style={{ fontSize: 32, fontWeight: 700, color: "#fff", letterSpacing: -1.5, marginBottom: 5 }}>{fmtVal(sc.end)}</div>
         <div style={{ display: "flex", gap: 12 }}>
           <span style={{ fontSize: 11, color, fontWeight: 600 }}>+{gain}% total</span>
-          <span style={{ fontSize: 11, color: "#282828" }}>${sc.invested.toLocaleString()} contributed</span>
+          <span style={{ fontSize: 11, color: "#888" }}>${sc.invested.toLocaleString()} contributed</span>
         </div>
       </div>
-
-      {s.outlier && <div style={{ marginTop: 12, padding: "9px 12px", background: "rgba(244,162,41,.04)", border: "1px solid rgba(244,162,41,.1)", borderRadius: 9, fontSize: 10, color: "#5a4220", lineHeight: 1.65, letterSpacing: .2 }}>Extreme historical outlier. Not representative of typical outcomes.</div>}
-      <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid #0a0a0a", fontSize: 10, color: "#1e1e1e", lineHeight: 1.6, letterSpacing: .3 }}>Illustrative only. Past returns do not guarantee future results.</div>
+      {s.outlier && <div style={{ marginTop: 12, padding: "9px 12px", background: "rgba(244,162,41,.04)", border: "1px solid rgba(244,162,41,.1)", borderRadius: 9, fontSize: 10, color: "#c8841a", lineHeight: 1.65, letterSpacing: .2 }}>Extreme historical outlier. Not representative of typical outcomes.</div>}
+      <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid #0a0a0a", fontSize: 10, color: "#666", lineHeight: 1.6, letterSpacing: .3 }}>Illustrative only. Past returns do not guarantee future results.</div>
     </div>
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   EXAMPLES PAGE
-══════════════════════════════════════════════════════════ */
 function Examples({ nav }) {
   useReveal();
   return (
@@ -550,24 +529,19 @@ function Examples({ nav }) {
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div className="rv" style={{ marginBottom: 18 }}><span className="gtag">Real Numbers · Illustrative</span></div>
             <h1 className="rv">What consistent investing<br /><span className="sh">actually becomes.</span></h1>
-            <p className="rv" style={{ maxWidth: 520, margin: "20px auto 0", fontSize: 15, lineHeight: 1.85, color: "#666" }}>These are not promises. They are what the data shows happened — in real indexes, across real markets — over 15 years. Select your monthly amount on any card to see the growth curve update.</p>
+            <p className="rv" style={{ maxWidth: 520, margin: "20px auto 0", fontSize: 15, lineHeight: 1.85, color: "#aaa" }}>These are not promises. They are what the data shows happened — in real indexes, across real markets — over 15 years. Select your monthly amount on any card to see the growth curve update.</p>
           </div>
-
-          {/* Index section */}
           <div className="rv" style={{ marginBottom: 32 }}>
-            <div className="lbl" style={{ marginBottom: 10, color: "#2e2e2e" }}>Major Index Funds</div>
+            <div className="lbl" style={{ marginBottom: 10 }}>Major Index Funds</div>
             <div style={{ height: 1, background: "linear-gradient(90deg,#1a1a1a,transparent)", marginBottom: 28, animation: "lineExtend 1s ease both" }} />
           </div>
-
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, marginBottom: 80 }}>
             {INDEX_DATA.map((idx, i) => <div key={i} className={`rv d${i + 1}`}><IndexCard idx={idx} /></div>)}
           </div>
-
-          {/* Insight block */}
           <div className="gc rv" style={{ padding: "44px 36px", marginBottom: 88, border: `1px solid rgba(255,255,255,.06)` }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 40, alignItems: "center" }}>
               <div>
-                <div className="lbl" style={{ marginBottom: 12, color: "#2e2e2e" }}>Why this matters</div>
+                <div className="lbl" style={{ marginBottom: 12 }}>Why this matters</div>
                 <h3 style={{ marginBottom: 14 }}>The index always recovers.<br />Most individual investors don't.</h3>
                 <p style={{ fontSize: 14, lineHeight: 1.85, marginBottom: 18 }}>Research consistently shows that over 90% of active fund managers underperform the index over 15 years. The families who build real wealth are not the ones who pick the right companies — they are the ones who bought the entire market and left it alone.</p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -582,32 +556,27 @@ function Examples({ nav }) {
               <div style={{ display: "flex", justifyContent: "center" }}><PyramidSVG size={230} /></div>
             </div>
           </div>
-
-          {/* Stocks section */}
           <div className="rv" style={{ marginBottom: 32 }}>
-            <div className="lbl" style={{ marginBottom: 10, color: "#2e2e2e" }}>Top Historical Stocks</div>
+            <div className="lbl" style={{ marginBottom: 10 }}>Top Historical Stocks</div>
             <div style={{ height: 1, background: "linear-gradient(90deg,#1a1a1a,transparent)", marginBottom: 20, animation: "lineExtend 1s ease both" }} />
             <h2 style={{ marginBottom: 12 }}>Now see what the top stocks<br />looked like over the same period.</h2>
-            <p style={{ fontSize: 14, color: "#444", lineHeight: 1.85, maxWidth: 640, marginBottom: 0 }}>The indexes above show what consistent, diversified investing delivers over the long term. The companies below show what was possible inside those indexes — not as a strategy to replicate, but as context for why getting in early and staying in is the only approach that reliably works. These are long-term, real-world outcomes. Not short-term speculation.</p>
+            <p style={{ fontSize: 14, color: "#aaa", lineHeight: 1.85, maxWidth: 640, marginBottom: 0 }}>The indexes above show what consistent, diversified investing delivers over the long term. The companies below show what was possible inside those indexes — not as a strategy to replicate, but as context for why getting in early and staying in is the only approach that reliably works.</p>
           </div>
-
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, marginBottom: 52 }}>
             {STOCK_DATA.map((s, i) => <div key={i} className={`rv d${(i % 5) + 1}`}><StockCard s={s} /></div>)}
           </div>
-
           <div className="dc rv" style={{ padding: "34px 30px", textAlign: "center", borderColor: "#141414" }}>
             <div style={{ marginBottom: 12 }}><span className="tag">Important Disclaimer</span></div>
-            <p style={{ maxWidth: 600, margin: "0 auto 20px", fontSize: 13, lineHeight: 1.85, color: "#383838" }}>All figures on this page are illustrative and use historical average annual returns as reference only. Individual stock examples reflect exceptional historical cases — not typical or expected outcomes. Past performance never guarantees future results. Apex Holdings is an educational programme, not investment advice.</p>
+            <p style={{ maxWidth: 600, margin: "0 auto 20px", fontSize: 13, lineHeight: 1.85, color: "#aaa" }}>All figures on this page are illustrative and use historical average annual returns as reference only. Individual stock examples reflect exceptional historical cases — not typical or expected outcomes. Past performance never guarantees future results. Apex Holdings is an educational programme, not investment advice.</p>
             <button className="bgn" onClick={() => nav("intake")}>Reserve Your Spot</button>
           </div>
         </div>
       </section>
-
       <section style={{ padding: "84px 0", background: "#030303", textAlign: "center", zIndex: 1, position: "relative" }}>
         <div className="ws">
           <div className="rv" style={{ marginBottom: 14 }}><span className="gtag">{CONFIG.seatsTotal - CONFIG.seatsTaken} spots remaining</span></div>
           <h2 className="rv" style={{ marginBottom: 14 }}>Your financial future<br />starts with one decision.</h2>
-          <p className="rv" style={{ fontSize: 15, maxWidth: 380, margin: "0 auto 32px", color: "#555" }}>Everything you just saw is what is possible. The programme shows exactly how to get in — simply, safely, and for the long term.</p>
+          <p className="rv" style={{ fontSize: 15, maxWidth: 380, margin: "0 auto 32px", color: "#aaa" }}>Everything you just saw is what is possible. The programme shows exactly how to get in — simply, safely, and for the long term.</p>
           <div className="rv" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <button className="bw" onClick={() => nav("intake")} style={{ fontSize: 15, padding: "14px 32px" }}>Reserve a Spot</button>
             <button className="bg" onClick={() => nav("pricing")} style={{ fontSize: 15, padding: "14px 32px" }}>View Pricing</button>
@@ -618,9 +587,6 @@ function Examples({ nav }) {
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   HOME
-══════════════════════════════════════════════════════════ */
 function Home({ nav }) {
   useReveal();
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -628,7 +594,6 @@ function Home({ nav }) {
     const fn = e => setMouse({ x: e.clientX / window.innerWidth - .5, y: e.clientY / window.innerHeight - .5 });
     window.addEventListener("mousemove", fn); return () => window.removeEventListener("mousemove", fn);
   }, []);
-
   return (
     <div className="page-wrap">
       <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", paddingTop: 120, paddingBottom: 88, position: "relative", zIndex: 1, overflow: "hidden" }}>
@@ -636,32 +601,31 @@ function Home({ nav }) {
         <div className="w" style={{ textAlign: "center" }}>
           <div style={{ animation: "heroIn .7s ease both", marginBottom: 20 }}><span className="gtag">Exclusive · Up to 30 People · Canada + United States</span></div>
           <h1 style={{ animation: "heroIn 1s .1s ease both", marginBottom: 22 }}>The wealth your<br /><span className="sh">family inherits.</span></h1>
-          <p style={{ fontSize: "clamp(15px,2vw,18px)", maxWidth: 500, margin: "0 auto 10px", color: "#666", animation: "heroIn 1s .22s ease both", lineHeight: 1.8 }}>A 7-day programme that gives families and individuals a complete long-term investing system — built together, understood by everyone, designed to last generations.</p>
-          <p style={{ fontSize: 10, color: "#1e1e1e", letterSpacing: 1.4, animation: "heroIn 1s .3s ease both", marginBottom: 40 }}>Education only · No stock tips · No hype · Built for Canada + the US</p>
+          <p style={{ fontSize: "clamp(15px,2vw,18px)", maxWidth: 500, margin: "0 auto 10px", color: "#aaa", animation: "heroIn 1s .22s ease both", lineHeight: 1.8 }}>A 7-day programme that gives families and individuals a complete long-term investing system — built together, understood by everyone, designed to last generations.</p>
+          <p style={{ fontSize: 10, color: "#555", letterSpacing: 1.4, animation: "heroIn 1s .3s ease both", marginBottom: 40 }}>Education only · No stock tips · No hype · Built for Canada + the US</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 54, animation: "heroIn 1s .38s ease both" }}>
             <button className="bw" onClick={() => nav("examples")} style={{ fontSize: 15, padding: "14px 34px" }}>See the Numbers</button>
             <button className="bg" onClick={() => nav("intake")} style={{ fontSize: 15, padding: "14px 34px" }}>Reserve a Spot</button>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, animation: "heroIn 1s .46s ease both" }}>
-            <div className="lbl" style={{ marginBottom: 4, color: "#2a2a2a" }}>Programme begins in</div>
+            <div className="lbl" style={{ marginBottom: 4 }}>Programme begins in</div>
             <Countdown />
           </div>
         </div>
-
         <div className="w rv" style={{ marginTop: 68 }}>
           <div style={{ background: "#050505", border: "1px solid #111", borderRadius: 26, overflow: "hidden", boxShadow: "0 64px 120px rgba(0,0,0,.85)" }}>
             <div style={{ display: "flex", gap: 6, padding: "14px 22px", borderBottom: "1px solid #090909", alignItems: "center" }}>
               {["#444","#333","#2a2a2a"].map((c, i) => <div key={i} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />)}
-              <div style={{ flex: 1, height: 18, background: "#090909", borderRadius: 5, marginLeft: 10, display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ fontSize: 9, color: "#181818", letterSpacing: .8 }}>apex-family-dashboard.app</span></div>
+              <div style={{ flex: 1, height: 18, background: "#090909", borderRadius: 5, marginLeft: 10, display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ fontSize: 9, color: "#444", letterSpacing: .8 }}>apex-family-dashboard.app</span></div>
             </div>
             <div style={{ padding: "24px 26px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 10, marginBottom: 20 }}>
                 {[["Portfolio Value","$62,840","+14.2%","YTD"],["TFSA / Roth","$31,000","Maxed","On track"],["Monthly Auto","$400","Active","Set & forget"],["Family Goal","$300K","Age 40","56% complete"]].map(([t,v,s,l])=>(
                   <div key={t} style={{ background: "#090909", border: "1px solid #111", borderRadius: 14, padding: "16px 18px", flex: "1 1 120px" }}>
-                    <div className="lbl" style={{ marginBottom: 7, color: "#252525" }}>{t}</div>
+                    <div className="lbl" style={{ marginBottom: 7 }}>{t}</div>
                     <div style={{ fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 3 }}>{v}</div>
                     <div style={{ fontSize: 11, color: G }}>{s}</div>
-                    <div style={{ fontSize: 10, color: "#252525" }}>{l}</div>
+                    <div style={{ fontSize: 10, color: "#666" }}>{l}</div>
                   </div>
                 ))}
               </div>
@@ -676,22 +640,19 @@ function Home({ nav }) {
           </div>
         </div>
       </section>
-
       <Ticker />
-
-      {/* Numbers teaser */}
       <section className="sec" style={{ background: "#030303" }}>
         <div className="w">
           <div style={{ textAlign: "center", marginBottom: 52 }}>
-            <div className="rv" style={{ marginBottom: 14 }}><span className="lbl" style={{ color: "#252525" }}>The Numbers</span></div>
+            <div className="rv" style={{ marginBottom: 14 }}><span className="lbl">The Numbers</span></div>
             <h2 className="rv">$400 a month. 15 years.</h2>
-            <p className="rv" style={{ maxWidth: 420, margin: "14px auto 30px", fontSize: 14, color: "#444" }}>Across four major indexes. Interactive charts, switchable monthly amounts, and 15 years of real historical data.</p>
+            <p className="rv" style={{ maxWidth: 420, margin: "14px auto 30px", fontSize: 14, color: "#aaa" }}>Across four major indexes. Interactive charts, switchable monthly amounts, and 15 years of real historical data.</p>
             <div className="rv"><button className="bgn" onClick={() => nav("examples")} style={{ fontSize: 14, padding: "13px 30px" }}>Explore the Numbers</button></div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 12 }}>
             {[["S&P 500","$277K","15 yrs · ~10.4%/yr"],["Nasdaq-100","$396K","15 yrs · ~13.2%/yr"],["TSX Composite","$208K","15 yrs · ~7.8%/yr"],["MSCI World","$248K","15 yrs · ~9.1%/yr"]].map(([n,v,s],i)=>(
               <div key={i} className={`gcard rv d${i+1}`} style={{ padding: "24px 20px", cursor: "pointer" }} onClick={() => nav("examples")}>
-                <div className="lbl" style={{ marginBottom: 8, color: "#252525" }}>{n}</div>
+                <div className="lbl" style={{ marginBottom: 8 }}>{n}</div>
                 <div style={{ fontSize: 26, fontWeight: 700, color: "#fff", letterSpacing: -1, marginBottom: 5 }}>{v}</div>
                 <div style={{ fontSize: 11, color: G }}>{s}</div>
               </div>
@@ -699,13 +660,11 @@ function Home({ nav }) {
           </div>
         </div>
       </section>
-
-      {/* Vision */}
       <section className="sec">
         <div className="w">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 56, alignItems: "center" }}>
             <div>
-              <div className="rv lbl" style={{ marginBottom: 14, color: "#252525" }}>Why It Matters</div>
+              <div className="rv lbl" style={{ marginBottom: 14 }}>Why It Matters</div>
               <h2 className="rv" style={{ marginBottom: 18 }}>Money that works<br />for generations.</h2>
               <p className="rv" style={{ fontSize: 15, marginBottom: 16, lineHeight: 1.85 }}>The people who start early — even imperfectly — build wealth that outlasts them. Getting into the right accounts and the right funds at the right time is not complicated. But nobody teaches it clearly.</p>
               <p className="rv" style={{ fontSize: 14, marginBottom: 28, lineHeight: 1.85 }}>Apex Holdings is the beginning of a wealth system — built together, understood by everyone in the room, and designed to be passed down.</p>
@@ -718,8 +677,6 @@ function Home({ nav }) {
           </div>
         </div>
       </section>
-
-      {/* Included */}
       <section className="sec" style={{ background: "#030303" }}>
         <div className="w">
           <div style={{ textAlign: "center", marginBottom: 52 }}>
@@ -739,8 +696,6 @@ function Home({ nav }) {
           </div>
         </div>
       </section>
-
-      {/* Add-on */}
       <section className="sec">
         <div className="w">
           <div className="gc rv" style={{ padding: "46px 38px", display: "flex", flexWrap: "wrap", gap: 36, alignItems: "center", justifyContent: "space-between", border: `1px solid ${GB}`, animation: "greenGlow 5s ease-in-out infinite" }}>
@@ -750,21 +705,19 @@ function Home({ nav }) {
               <p style={{ fontSize: 14, lineHeight: 1.85, maxWidth: 420, marginBottom: 18 }}>After Day 7, receive a custom-written summary of your plan — built around your goals, country, accounts, and risk profile. Not a template. Written specifically for you. Followed by a 2-week email series to maintain momentum.</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {["Custom-written for your situation","Account roadmap for your country","2-week accountability series","Priority Q&A slot","Delivered within 48 hours"].map(f=>(
-                  <span key={f} style={{ fontSize: 11, color: "#333", background: "rgba(255,255,255,.025)", border: "1px solid #141414", padding: "3px 11px", borderRadius: 100 }}>{f}</span>
+                  <span key={f} style={{ fontSize: 11, color: "#aaa", background: "rgba(255,255,255,.025)", border: "1px solid #2a2a2a", padding: "3px 11px", borderRadius: 100 }}>{f}</span>
                 ))}
               </div>
             </div>
             <div style={{ textAlign: "center" }}>
-              <div className="lbl" style={{ marginBottom: 4, color: "#333" }}>Add-On</div>
+              <div className="lbl" style={{ marginBottom: 4 }}>Add-On</div>
               <div style={{ fontSize: 58, fontWeight: 700, color: "#fff", letterSpacing: -3 }}>${CONFIG.addOnPrice}</div>
-              <div style={{ fontSize: 11, color: "#333", marginBottom: 18 }}>one-time</div>
+              <div style={{ fontSize: 11, color: "#888", marginBottom: 18 }}>one-time</div>
               <button className="bgn" onClick={() => nav("pricing")}>Add This</button>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Testimonials */}
       <section className="sec" style={{ background: "#030303" }}>
         <div className="w">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -777,19 +730,17 @@ function Home({ nav }) {
                 <div style={{ height: 2, width: 32, background: G, borderRadius: 2, marginBottom: 18, opacity: .6 }} />
                 <p style={{ fontSize: 13, color: "#c8c8cc", lineHeight: 1.8, marginBottom: 18, fontStyle: "italic" }}>"{q}"</p>
                 <div style={{ fontSize: 13, fontWeight: 600, color: "#fff" }}>{n}</div>
-                <div style={{ fontSize: 11, color: "#2a2a2a", marginTop: 3 }}>{r}</div>
+                <div style={{ fontSize: 11, color: "#888", marginTop: 3 }}>{r}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Final CTA */}
       <section style={{ padding: "104px 0", textAlign: "center", zIndex: 1, position: "relative" }}>
         <div className="ws">
           <div className="rv" style={{ marginBottom: 16 }}><span className="gtag">{CONFIG.seatsTotal - CONFIG.seatsTaken} spots remaining</span></div>
           <h2 className="rv" style={{ marginBottom: 16 }}>Start building your<br />financial future.</h2>
-          <p className="rv" style={{ fontSize: 15, maxWidth: 360, margin: "0 auto 34px", color: "#444" }}>From ${CONFIG.prices.deposit} deposit. Four plan options. Canada and the United States.</p>
+          <p className="rv" style={{ fontSize: 15, maxWidth: 360, margin: "0 auto 34px", color: "#aaa" }}>From ${CONFIG.prices.deposit} deposit. Four plan options. Canada and the United States.</p>
           <div className="rv" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <button className="bw" onClick={() => nav("intake")} style={{ fontSize: 15, padding: "14px 34px" }}>Reserve Now</button>
             <button className="bg" onClick={() => nav("pricing")} style={{ fontSize: 15, padding: "14px 34px" }}>See Pricing</button>
@@ -800,9 +751,6 @@ function Home({ nav }) {
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   PROGRAM
-══════════════════════════════════════════════════════════ */
 function Program({ nav }) {
   useReveal();
   const [open, setOpen] = useState(null);
@@ -826,20 +774,20 @@ function Program({ nav }) {
               <p className="rv" style={{ fontSize: 15, marginBottom: 20, lineHeight: 1.85 }}>Each day builds on the last. By Day 7 your household has a complete, personalised investing system and the knowledge to run it for decades — in Canada or the US.</p>
               <div className="rv" style={{ display: "flex", flexWrap: "wrap", gap: 9 }}>
                 {["1 hr/day","7 days","Canada + US","Dedicated Q&A daily","Private follow-up available"].map(f=>(
-                  <span key={f} style={{ fontSize: 11, color: "#383838", background: "rgba(255,255,255,.025)", border: "1px solid #141414", padding: "4px 12px", borderRadius: 100 }}>{f}</span>
+                  <span key={f} style={{ fontSize: 11, color: "#aaa", background: "rgba(255,255,255,.025)", border: "1px solid #2a2a2a", padding: "4px 12px", borderRadius: 100 }}>{f}</span>
                 ))}
               </div>
             </div>
             <div className="rvr">
               <div style={{ background: "#050505", border: "1px solid #0e0e0e", borderRadius: 16, padding: "18px", marginBottom: 14 }}>
-                <div className="lbl" style={{ marginBottom: 10, color: "#1e1e1e" }}>Portfolio Growth · Illustrative</div>
+                <div className="lbl" style={{ marginBottom: 10 }}>Portfolio Growth · Illustrative</div>
                 <HeroChart />
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
                 {[["CA","TFSA · RRSP · FHSA · RESP"],["US","Roth · 529 · HSA · 401k"]].map(([fl,d])=>(
                   <div key={d} className="dc" style={{ padding: "14px 16px" }}>
                     <div style={{ fontSize: 13, fontWeight: 700, color: G, marginBottom: 3 }}>{fl}</div>
-                    <div style={{ fontSize: 11, color: "#2e2e2e" }}>{d}</div>
+                    <div style={{ fontSize: 11, color: "#aaa" }}>{d}</div>
                   </div>
                 ))}
               </div>
@@ -850,14 +798,14 @@ function Program({ nav }) {
               <div key={i} className="ai rv">
                 <div className="ah" onClick={() => setOpen(open === i ? null : i)}>
                   <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                    <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: 1.4, color: "#1e1e1e", minWidth: 38 }}>{d}</span>
-                    <span className="at" style={{ color: open === i ? "#fff" : "#555" }}>{t}</span>
+                    <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: 1.4, color: "#888", minWidth: 38 }}>{d}</span>
+                    <span className="at" style={{ color: open === i ? "#fff" : "#aaa" }}>{t}</span>
                   </div>
-                  <span style={{ color: open === i ? G : "#252525", fontSize: 18, transition: "transform .45s cubic-bezier(.16,1,.3,1)", transform: open === i ? "rotate(45deg)" : "rotate(0)", flexShrink: 0 }}>+</span>
+                  <span style={{ color: open === i ? G : "#555", fontSize: 18, transition: "transform .45s cubic-bezier(.16,1,.3,1)", transform: open === i ? "rotate(45deg)" : "rotate(0)", flexShrink: 0 }}>+</span>
                 </div>
                 <div className={`ab${open === i ? " open" : ""}`}>
                   <div style={{ paddingBottom: 24 }}>
-                    <p style={{ fontSize: 14, marginBottom: 14, lineHeight: 1.85, color: "#888" }}>{content}</p>
+                    <p style={{ fontSize: 14, marginBottom: 14, lineHeight: 1.85, color: "#aaa" }}>{content}</p>
                     <div style={{ display: "inline-flex", gap: 8, background: GD, border: `1px solid ${GB}`, borderRadius: 9, padding: "8px 14px" }}>
                       <span style={{ fontSize: 11, color: G }}>Homework — {hw}</span>
                     </div>
@@ -876,9 +824,6 @@ function Program({ nav }) {
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   MISSION
-══════════════════════════════════════════════════════════ */
 function Mission({ nav }) {
   useReveal();
   return (
@@ -890,22 +835,20 @@ function Mission({ nav }) {
               <div className="rv" style={{ marginBottom: 16 }}><span className="tag">Mission</span></div>
               <h1 className="rv" style={{ marginBottom: 22 }}>Wealth is not<br /><span className="sh">inherited. It is built.</span></h1>
               <p className="rv" style={{ fontSize: 15, color: "#c8c8cc", lineHeight: 1.9, marginBottom: 16 }}>Most people never get the conversation. Nobody sat them down and explained how money actually works — how a few hundred dollars a month, left alone for long enough, becomes something their children will feel for the rest of their lives.</p>
-              <p className="rv" style={{ fontSize: 14, lineHeight: 1.9, marginBottom: 26, color: "#555" }}>Apex Holdings exists to change that. Not with hype. Not with predictions. With clarity — the kind that makes someone look at their finances and say: <em>"We should have done this sooner."</em></p>
+              <p className="rv" style={{ fontSize: 14, lineHeight: 1.9, marginBottom: 26, color: "#aaa" }}>Apex Holdings exists to change that. Not with hype. Not with predictions. With clarity — the kind that makes someone look at their finances and say: <em>"We should have done this sooner."</em></p>
               <div className="rv"><button className="bgn" onClick={() => nav("about")}>Meet the Founder</button></div>
             </div>
             <div className="rvr" style={{ display: "flex", justifyContent: "center" }}><PyramidSVG /></div>
           </div>
-
           <div className="rv" style={{ borderTop: `1px solid ${GB}`, borderBottom: `1px solid ${GB}`, padding: "56px 0", marginBottom: 76, textAlign: "center", background: GD }}>
             <p style={{ fontSize: "clamp(17px,2.6vw,28px)", color: "#fff", lineHeight: 1.72, fontWeight: 400, letterSpacing: "-.5px", maxWidth: 660, margin: "0 auto" }}>
               "The people who build real wealth are not the ones who knew the most. They are the ones who started — and kept going."
             </p>
             <div style={{ fontSize: 10, color: G, letterSpacing: 2, marginTop: 22 }}>— Apex Holdings</div>
           </div>
-
           <div style={{ marginBottom: 68 }}>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <div className="rv" style={{ marginBottom: 14 }}><span className="lbl" style={{ color: "#252525" }}>What Drives Us</span></div>
+              <div className="rv" style={{ marginBottom: 14 }}><span className="lbl">What Drives Us</span></div>
               <h2 className="rv">Five beliefs we build on.</h2>
             </div>
             {[["Clarity is a right, not a privilege.","Financial education has been kept complicated by design. We cut through it — not by dumbing it down, but by making it honest."],["Starting matters more than starting perfectly.","The person who opens an account today with $200 and no experience will outperform the one still researching five years from now."],["The next generation deserves a head start.","Every family that builds a system today is giving future generations options they would not otherwise have. That compounds too."],["Exclusivity exists for a reason.","We keep each cohort small — up to 30 people, though we aim for around 20. Every question gets answered. No one is left behind."],["This works anywhere on the continent.","Canada or the United States — we cover both, in depth, in the same week. Because the principles of wealth do not stop at the border."]].map(([t,d],i)=>(
@@ -924,9 +867,6 @@ function Mission({ nav }) {
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   ABOUT
-══════════════════════════════════════════════════════════ */
 function About({ nav }) {
   useReveal();
   return (
@@ -938,8 +878,8 @@ function About({ nav }) {
               <div className="rv" style={{ marginBottom: 16 }}><span className="tag">The Founder</span></div>
               <h1 className="rv" style={{ marginBottom: 18 }}>Built by someone<br />who started early.</h1>
               <p className="rv" style={{ fontSize: 15, color: "#c8c8cc", lineHeight: 1.9, marginBottom: 16 }}>Apex Holdings was built by Eshan Ramji — a young Canadian investor who went deep into financial education and could not find anything designed for families or individuals to learn together, practically.</p>
-              <p className="rv" style={{ fontSize: 14, lineHeight: 1.9, marginBottom: 16, color: "#555" }}>After hundreds of hours researching Canadian and US account systems, index investing, and long-term wealth building, the curriculum was built and tested on real households — refined until every concept landed without confusion.</p>
-              <p className="rv" style={{ fontSize: 14, lineHeight: 1.9, marginBottom: 26, color: "#555" }}>The result is a programme that people trust because it is clear, that adults engage with because it is practical, and that sticks because you build the plan yourself during the week.</p>
+              <p className="rv" style={{ fontSize: 14, lineHeight: 1.9, marginBottom: 16, color: "#aaa" }}>After hundreds of hours researching Canadian and US account systems, index investing, and long-term wealth building, the curriculum was built and tested on real households — refined until every concept landed without confusion.</p>
+              <p className="rv" style={{ fontSize: 14, lineHeight: 1.9, marginBottom: 26, color: "#aaa" }}>The result is a programme that people trust because it is clear, that adults engage with because it is practical, and that sticks because you build the plan yourself during the week.</p>
               <div className="rv" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <button className="bw" onClick={() => nav("mission")}>Read Our Mission</button>
                 <button className="bg" onClick={() => nav("intake")}>Reserve a Spot</button>
@@ -951,7 +891,7 @@ function About({ nav }) {
                   <div style={{ textAlign: "center" }}>
                     <Pyr size={46} />
                     <div style={{ fontSize: 12, color: "#fff", marginTop: 14, fontWeight: 600, letterSpacing: "-.2px" }}>Eshan Ramji</div>
-                    <div style={{ fontSize: 9, color: "#202020", marginTop: 4, letterSpacing: 1.2 }}>Founder · Apex Holdings</div>
+                    <div style={{ fontSize: 9, color: "#888", marginTop: 4, letterSpacing: 1.2 }}>Founder · Apex Holdings</div>
                   </div>
                 </div>
                 <div style={{ position: "absolute", inset: -16, borderRadius: "50%", border: `1px solid ${GB}`, opacity: .4, animation: "ringOut 2.4s ease-out infinite" }} />
@@ -959,7 +899,7 @@ function About({ nav }) {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, width: "100%", maxWidth: 280 }}>
                 {[["Based","Canada"],["Focus","Family wealth education"],["Research","100+ hours"],["Approach","Clarity above all"]].map(([k,v])=>(
                   <div key={k} className="dc" style={{ padding: "15px 16px" }}>
-                    <div className="lbl" style={{ marginBottom: 5, color: "#222" }}>{k}</div>
+                    <div className="lbl" style={{ marginBottom: 5 }}>{k}</div>
                     <div style={{ fontSize: 13, fontWeight: 600, color: "#fff" }}>{v}</div>
                   </div>
                 ))}
@@ -967,7 +907,7 @@ function About({ nav }) {
             </div>
           </div>
           <div className="gc rv" style={{ padding: "34px 30px", textAlign: "center", border: `1px solid ${GB}` }}>
-            <p style={{ maxWidth: 520, margin: "0 auto 24px", fontSize: 14, lineHeight: 1.9, color: "#444" }}>Every person who comes through Apex Holdings leaves with a real plan, real knowledge, and the confidence to follow through — for the next generation.</p>
+            <p style={{ maxWidth: 520, margin: "0 auto 24px", fontSize: 14, lineHeight: 1.9, color: "#aaa" }}>Every person who comes through Apex Holdings leaves with a real plan, real knowledge, and the confidence to follow through — for the next generation.</p>
             <button className="bgn" onClick={() => nav("intake")} style={{ fontSize: 15, padding: "14px 34px" }}>Join the Programme</button>
           </div>
         </div>
@@ -976,9 +916,6 @@ function About({ nav }) {
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   PRICING
-══════════════════════════════════════════════════════════ */
 function Pricing({ nav }) {
   useReveal();
   const pct = (CONFIG.seatsTaken / CONFIG.seatsTotal) * 100;
@@ -997,31 +934,29 @@ function Pricing({ nav }) {
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div className="rv" style={{ marginBottom: 16 }}><span className="tag">Pricing</span></div>
             <h1 className="rv">Simple, transparent<br />pricing.</h1>
-            <p className="rv" style={{ maxWidth: 380, margin: "18px auto 0", fontSize: 14, color: "#555" }}>Four plans. One clear system. No hidden costs.</p>
+            <p className="rv" style={{ maxWidth: 380, margin: "18px auto 0", fontSize: 14, color: "#aaa" }}>Four plans. One clear system. No hidden costs.</p>
           </div>
-
           <div style={{ maxWidth: 480, margin: "0 auto 56px" }}>
             <div className="dc rv" style={{ padding: "28px 28px", textAlign: "center", border: `1px solid ${GB}` }}>
-              <div className="lbl" style={{ marginBottom: 8, color: "#2a2a2a" }}>Exclusive Cohort</div>
-              <p style={{ fontSize: 13, marginBottom: 6, color: "#333" }}>{CONFIG.seatsTaken} of {CONFIG.seatsTotal} spots reserved</p>
-              <p style={{ fontSize: 12, color: "#282828", marginBottom: 18, lineHeight: 1.75 }}>We keep this programme small — up to 30 people, though we aim to stay around 20. Every question is answered. No one gets lost in the group.</p>
+              <div className="lbl" style={{ marginBottom: 8 }}>Exclusive Cohort</div>
+              <p style={{ fontSize: 13, marginBottom: 6, color: "#aaa" }}>{CONFIG.seatsTaken} of {CONFIG.seatsTotal} spots reserved</p>
+              <p style={{ fontSize: 12, color: "#888", marginBottom: 18, lineHeight: 1.75 }}>We keep this programme small — up to 30 people, though we aim to stay around 20. Every question is answered. No one gets lost in the group.</p>
               <div style={{ background: "#0e0e0e", borderRadius: 100, height: 2, overflow: "hidden", marginBottom: 12 }}>
                 <div style={{ height: "100%", borderRadius: 100, background: `linear-gradient(90deg,#1e1e1e,${G})`, width: `${pct}%`, transition: "width 1.8s cubic-bezier(.16,1,.3,1)" }} />
               </div>
               <p style={{ fontSize: 13, color: G, fontWeight: 600 }}>{CONFIG.seatsTotal - CONFIG.seatsTaken} spots remaining</p>
             </div>
           </div>
-
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 14, marginBottom: 48 }}>
             {plans.map((pl, i) => (
               <div key={pl.id} className={`rv d${i+1}`} style={{ position: "relative" }}>
-                {pl.badge && <div style={{ position: "absolute", top: 14, right: 14, zIndex: 2, background: pl.style==="bw"?"#fff":"rgba(255,255,255,.07)", color: pl.style==="bw"?"#000":"#888", fontSize: 9, fontWeight: 700, letterSpacing: 1.2, padding: "3px 9px", borderRadius: 100, border: pl.style==="bw"?"none":"1px solid rgba(255,255,255,.1)" }}>{pl.badge}</div>}
+                {pl.badge && <div style={{ position: "absolute", top: 14, right: 14, zIndex: 2, background: pl.style==="bw"?"#fff":"rgba(255,255,255,.07)", color: pl.style==="bw"?"#000":"#aaa", fontSize: 9, fontWeight: 700, letterSpacing: 1.2, padding: "3px 9px", borderRadius: 100, border: pl.style==="bw"?"none":"1px solid rgba(255,255,255,.1)" }}>{pl.badge}</div>}
                 <div className={pl.style === "bw" ? "gc" : "dc"} style={{ padding: "28px 24px", height: "100%", display: "flex", flexDirection: "column", border: pl.style==="bw" ? `1px solid ${GB}` : "1px solid #151515" }}>
                   <div style={{ marginBottom: 12 }}><span className="tag">{pl.label}</span></div>
                   <div style={{ fontSize: 40, fontWeight: 700, color: "#fff", letterSpacing: -2, marginBottom: 4 }}>{pl.price}</div>
-                  <p style={{ fontSize: 12, color: "#333", marginBottom: 20 }}>{pl.sub}</p>
+                  <p style={{ fontSize: 12, color: "#aaa", marginBottom: 20 }}>{pl.sub}</p>
                   {pl.features.map((f, j) => (
-                    <div key={j} style={{ display: "flex", gap: 9, marginBottom: 9, fontSize: 13, color: "#555" }}>
+                    <div key={j} style={{ display: "flex", gap: 9, marginBottom: 9, fontSize: 13, color: "#ccc" }}>
                       <span style={{ color: G, flexShrink: 0, fontSize: 10, marginTop: 2 }}>—</span>{f}
                     </div>
                   ))}
@@ -1030,8 +965,6 @@ function Pricing({ nav }) {
               </div>
             ))}
           </div>
-
-          {/* Add-on: Personalized Summary */}
           <div className="gc rv" style={{ padding: "38px 32px", marginBottom: 16, border: `1px solid ${GB}` }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 30, alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ flex: "1 1 300px" }}>
@@ -1040,20 +973,18 @@ function Pricing({ nav }) {
                 <p style={{ fontSize: 14, lineHeight: 1.85, marginBottom: 14 }}>A custom-written summary of your plan after the programme ends — built around your goals, risk profile, country, and accounts. Followed by a structured 2-week email series. Not a template. Written specifically for your situation.</p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {["Custom-written for your situation","Account roadmap for your country","2-week accountability series","Priority Q&A slot","Delivered within 48 hours of Day 7"].map(f=>(
-                    <span key={f} style={{ fontSize: 11, color: "#333", background: "rgba(255,255,255,.025)", border: "1px solid #141414", padding: "3px 11px", borderRadius: 100 }}>{f}</span>
+                    <span key={f} style={{ fontSize: 11, color: "#aaa", background: "rgba(255,255,255,.025)", border: "1px solid #2a2a2a", padding: "3px 11px", borderRadius: 100 }}>{f}</span>
                   ))}
                 </div>
               </div>
               <div style={{ textAlign: "center", minWidth: 130 }}>
-                <div className="lbl" style={{ marginBottom: 4, color: "#2e2e2e" }}>Add-On</div>
+                <div className="lbl" style={{ marginBottom: 4 }}>Add-On</div>
                 <div style={{ fontSize: 48, fontWeight: 700, color: "#fff", letterSpacing: -2 }}>${CONFIG.addOnPrice}</div>
-                <div style={{ fontSize: 11, color: "#333", marginBottom: 18 }}>one-time</div>
+                <div style={{ fontSize: 11, color: "#888", marginBottom: 18 }}>one-time</div>
                 <button className="bgn" onClick={() => nav("intake")}>Add This</button>
               </div>
             </div>
           </div>
-
-          {/* Private follow-up */}
           <div className="dc rv" style={{ padding: "34px 32px", marginBottom: 28, border: "1px solid #1a1a1a" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 30, alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ flex: "1 1 300px" }}>
@@ -1062,29 +993,25 @@ function Pricing({ nav }) {
                 <p style={{ fontSize: 14, lineHeight: 1.85, marginBottom: 14 }}>After the programme, book a dedicated one-on-one session to go deeper on your specific situation. Your accounts, your goals, your questions. No group setting. Fully private, fully focused on you. Scheduled directly via email after Day 7.</p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {["20 minutes one-on-one","Your situation only","Scheduled after Day 7","Fully private","Booked via email"].map(f=>(
-                    <span key={f} style={{ fontSize: 11, color: "#333", background: "rgba(255,255,255,.025)", border: "1px solid #141414", padding: "3px 11px", borderRadius: 100 }}>{f}</span>
+                    <span key={f} style={{ fontSize: 11, color: "#aaa", background: "rgba(255,255,255,.025)", border: "1px solid #2a2a2a", padding: "3px 11px", borderRadius: 100 }}>{f}</span>
                   ))}
                 </div>
               </div>
               <div style={{ textAlign: "center", minWidth: 130 }}>
-                <div className="lbl" style={{ marginBottom: 4, color: "#2e2e2e" }}>Add-On</div>
+                <div className="lbl" style={{ marginBottom: 4 }}>Add-On</div>
                 <div style={{ fontSize: 48, fontWeight: 700, color: "#fff", letterSpacing: -2 }}>TBD</div>
-                <div style={{ fontSize: 11, color: "#333", marginBottom: 18 }}>contact us to book</div>
+                <div style={{ fontSize: 11, color: "#888", marginBottom: 18 }}>contact us to book</div>
                 <a href={`mailto:${CONFIG.email}?subject=Private Follow-Up Session`}><button className="bg">Request Session</button></a>
               </div>
             </div>
           </div>
-
-          <p className="rv" style={{ textAlign: "center", fontSize: 10, color: "#181818", letterSpacing: .4 }}>Educational programme only. Not registered financial advice. No returns guaranteed. Consult a licensed adviser.</p>
+          <p className="rv" style={{ textAlign: "center", fontSize: 10, color: "#555", letterSpacing: .4 }}>Educational programme only. Not registered financial advice. No returns guaranteed. Consult a licensed adviser.</p>
         </div>
       </section>
     </div>
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   INTAKE
-══════════════════════════════════════════════════════════ */
 function Intake() {
   useReveal();
   const [f, setF] = useState({ pname:"", email:"", phone:"", cname:"", cage:"", country:"", plan:"family", goal:"", monthly:"", risk:"", addOn:false, priv:false, mem:false });
@@ -1097,7 +1024,7 @@ function Intake() {
       <div className="w" style={{ textAlign: "center", maxWidth: 520, margin: "0 auto" }}>
         <div style={{ width: 56, height: 56, borderRadius: "50%", background: GD, border: `1px solid ${GB}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 22px", fontSize: 22, color: G, animation: "glowDot 2s ease-in-out infinite" }}>+</div>
         <h2 style={{ marginBottom: 14 }}>You are in, {f.pname.split(" ")[0]}.</h2>
-        <p style={{ fontSize: 15, marginBottom: 26, color: "#555" }}>We will follow up at <strong style={{ color: "#fff" }}>{f.email}</strong> within 24 hours.</p>
+        <p style={{ fontSize: 15, marginBottom: 26, color: "#aaa" }}>We will follow up at <strong style={{ color: "#fff" }}>{f.email}</strong> within 24 hours.</p>
         <div className="dc" style={{ textAlign: "left", marginBottom: 22, padding: "26px 24px" }}>
           <h4 style={{ marginBottom: 16 }}>What happens next</h4>
           {["Application reviewed and spot confirmed","Payment link sent within 24 hours","Confirmation and programme details sent", f.addOn?"Personalized summary initiated after Day 7":"Prep guide sent 48 hours before Day 1", f.priv?"Private follow-up session details sent separately":""].filter(Boolean).map((s,i)=>(
@@ -1107,7 +1034,7 @@ function Intake() {
             </div>
           ))}
         </div>
-        <p style={{ fontSize: 11, color: "#222" }}>{CONFIG.email} · {CONFIG.phone}</p>
+        <p style={{ fontSize: 11, color: "#888" }}>{CONFIG.email} · {CONFIG.phone}</p>
       </div>
     </div>
   );
@@ -1119,20 +1046,18 @@ function Intake() {
           <div style={{ marginBottom: 36 }}>
             <div className="rv" style={{ marginBottom: 14 }}><span className="gtag">Reserve Your Spot</span></div>
             <h1 className="rv" style={{ fontSize: "clamp(28px,5vw,48px)" }}>Secure your place.</h1>
-            <p className="rv" style={{ fontSize: 14, marginTop: 10, color: "#383838" }}>Submit this form and we will send your payment link within 24 hours. No charge now.</p>
+            <p className="rv" style={{ fontSize: 14, marginTop: 10, color: "#aaa" }}>Submit this form and we will send your payment link within 24 hours. No charge now.</p>
           </div>
-
           <div className="rv" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 22 }}>
             {[["family","Family Plan",`$${CONFIG.prices.family} · Parent + Person (12+)`],["couple","Couple Plan",`$${CONFIG.prices.couple} · Two Partners`],["individual","Individual",`$${CONFIG.prices.individual} · Solo Adult`],["deposit","Deposit Only",`$${CONFIG.prices.deposit} · Holds your spot`]].map(([v,l,d])=>(
               <div key={v} onClick={() => set("plan", v)} style={{ padding: "15px 17px", borderRadius: 14, border: `1px solid ${f.plan===v ? GB : "#141414"}`, background: f.plan===v ? GD : "#060606", cursor: "pointer", transition: "all .25s" }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 3 }}>{l}</div>
-                <div style={{ fontSize: 11, color: "#383838" }}>{d}</div>
+                <div style={{ fontSize: 11, color: "#aaa" }}>{d}</div>
               </div>
             ))}
           </div>
-
           <div className="dc rv" style={{ padding: "26px 24px", marginBottom: 14 }}>
-            <h4 style={{ marginBottom: 18, color: "#2a2a2a", fontWeight: 500, fontSize: 13 }}>{isIndy?"Your Information":isCouple?"Your Information":"Primary Contact"}</h4>
+            <h4 style={{ marginBottom: 18, color: "#aaa", fontWeight: 500, fontSize: 13 }}>{isIndy?"Your Information":isCouple?"Your Information":"Primary Contact"}</h4>
             <div className="fg"><label>Full Name</label><input value={f.pname} onChange={e=>set("pname",e.target.value)} placeholder={isCouple?"Partner 1 name":"Your full name"}/></div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
               <div className="fg"><label>Email</label><input type="email" value={f.email} onChange={e=>set("email",e.target.value)} placeholder="you@email.com"/></div>
@@ -1150,44 +1075,40 @@ function Intake() {
               <textarea value={f.goal} onChange={e=>set("goal",e.target.value)} rows={3} placeholder={isCouple?"e.g. Build a joint investing system we will both follow.":isIndy?"e.g. Build a system I will actually maintain.":"e.g. Set up the right accounts and build a long-term plan."}/>
             </div>
           </div>
-
           {!isIndy && (
             <div className="dc rv" style={{ padding: "26px 24px", marginBottom: 14 }}>
-              <h4 style={{ marginBottom: 18, color: "#2a2a2a", fontWeight: 500, fontSize: 13 }}>{isCouple?"Partner 2":"Additional Attendee (12+)"}</h4>
+              <h4 style={{ marginBottom: 18, color: "#aaa", fontWeight: 500, fontSize: 13 }}>{isCouple?"Partner 2":"Additional Attendee (12+)"}</h4>
               <div style={{ display: "grid", gridTemplateColumns: isCouple?"1fr":"1fr 1fr", gap: 12 }}>
                 <div className="fg"><label>{isCouple?"Partner 2 Name":"Name"}</label><input value={f.cname} onChange={e=>set("cname",e.target.value)} placeholder={isCouple?"Partner 2 name":"e.g. Alex"}/></div>
                 {!isCouple && <div className="fg"><label>Age</label><input type="number" value={f.cage} onChange={e=>set("cage",e.target.value)} placeholder="e.g. 14" min={12} max={25}/></div>}
               </div>
             </div>
           )}
-
           <div className="dc rv" style={{ padding: "26px 24px", marginBottom: 14 }}>
-            <h4 style={{ marginBottom: 16, color: "#2a2a2a", fontWeight: 500, fontSize: 13 }}>Optional Details</h4>
+            <h4 style={{ marginBottom: 16, color: "#aaa", fontWeight: 500, fontSize: 13 }}>Optional Details</h4>
             <div className="fg"><label>Monthly Target (USD or CAD)</label><input value={f.monthly} onChange={e=>set("monthly",e.target.value)} placeholder="e.g. $400"/></div>
           </div>
-
           <div className="gc rv" style={{ padding: "24px 22px", marginBottom: 20, border: `1px solid ${GB}` }}>
-            <div className="lbl" style={{ marginBottom: 16, color: "#2a2a2a" }}>Optional Add-Ons</div>
+            <div className="lbl" style={{ marginBottom: 16 }}>Optional Add-Ons</div>
             {[[f.addOn,"addOn","Personalized Summary + 2-Week Follow-Up",`+$${CONFIG.addOnPrice} · Custom-written plan and 2-week email series`],[f.priv,"priv","Private 20-Minute Follow-Up Call","Price TBD · One-on-one session after Day 7"]].map(([checked,key,label,desc])=>(
               <div key={key} onClick={()=>set(key,!checked)} style={{ display:"flex",gap:12,alignItems:"flex-start",cursor:"pointer",marginBottom:12,padding:"14px 16px",borderRadius:12,border:`1px solid ${checked?GB:"#141414"}`,background:checked?GD:"transparent",transition:"all .25s" }}>
-                <div style={{ width:18,height:18,borderRadius:4,background:checked?G:"transparent",border:`1px solid ${checked?G:"#252525"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,transition:"all .25s" }}>
+                <div style={{ width:18,height:18,borderRadius:4,background:checked?G:"transparent",border:`1px solid ${checked?G:"#444"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,transition:"all .25s" }}>
                   {checked&&<span style={{color:"#000",fontSize:10,fontWeight:700,lineHeight:1}}>+</span>}
                 </div>
                 <div>
                   <div style={{ fontSize:13,fontWeight:600,color:"#fff",marginBottom:3 }}>{label}</div>
-                  <p style={{ fontSize:11,color:"#383838",lineHeight:1.6 }}>{desc}</p>
+                  <p style={{ fontSize:11,color:"#aaa",lineHeight:1.6 }}>{desc}</p>
                 </div>
               </div>
             ))}
             <div style={{ display:"flex",alignItems:"center",gap:10,marginTop:6 }}>
               <input type="checkbox" id="mem" checked={f.mem} onChange={e=>set("mem",e.target.checked)} style={{width:15,height:15,accentColor:G}}/>
-              <label htmlFor="mem" style={{fontSize:12,color:"#333",cursor:"pointer"}}>Interested in Apex Family Club (${CONFIG.membershipPrice}/month) after the programme</label>
+              <label htmlFor="mem" style={{fontSize:12,color:"#aaa",cursor:"pointer"}}>Interested in Apex Family Club (${CONFIG.membershipPrice}/month) after the programme</label>
             </div>
           </div>
-
           <div className="rv">
             <button className="bw" onClick={()=>{if(f.pname&&f.email)setDone(true);}} style={{width:"100%",padding:"15px",fontSize:15}}>Submit Application</button>
-            <p style={{textAlign:"center",fontSize:10,color:"#1e1e1e",marginTop:12,letterSpacing:.3}}>No charge on submission. Payment link sent within 24 hours.</p>
+            <p style={{textAlign:"center",fontSize:10,color:"#666",marginTop:12,letterSpacing:.3}}>No charge on submission. Payment link sent within 24 hours.</p>
           </div>
         </div>
       </section>
@@ -1195,9 +1116,6 @@ function Intake() {
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   FAQ
-══════════════════════════════════════════════════════════ */
 function Faq({ nav }) {
   useReveal();
   const [open, setOpen] = useState(null);
@@ -1222,11 +1140,11 @@ function Faq({ nav }) {
             {faqs.map(([q, a], i) => (
               <div key={i} className="ai rv">
                 <div className="ah" onClick={() => setOpen(open===i?null:i)}>
-                  <span className="at" style={{ color: open===i?"#fff":"#555" }}>{q}</span>
-                  <span style={{ color: open===i?G:"#222", fontSize: 18, transition: "transform .45s cubic-bezier(.16,1,.3,1)", transform: open===i?"rotate(45deg)":"rotate(0)", flexShrink: 0, marginLeft: 16 }}>+</span>
+                  <span className="at" style={{ color: open===i?"#fff":"#aaa" }}>{q}</span>
+                  <span style={{ color: open===i?G:"#555", fontSize: 18, transition: "transform .45s cubic-bezier(.16,1,.3,1)", transform: open===i?"rotate(45deg)":"rotate(0)", flexShrink: 0, marginLeft: 16 }}>+</span>
                 </div>
                 <div className={`ab${open===i?" open":""}`}>
-                  <div style={{ paddingBottom: 22 }}><p style={{ fontSize: 14, lineHeight: 1.85, color: "#444" }}>{a}</p></div>
+                  <div style={{ paddingBottom: 22 }}><p style={{ fontSize: 14, lineHeight: 1.85, color: "#aaa" }}>{a}</p></div>
                 </div>
               </div>
             ))}
@@ -1239,8 +1157,8 @@ function Faq({ nav }) {
             <div className="dc rv" style={{ padding: "30px 26px" }}>
               {legal.map((d, i) => (
                 <div key={i} style={{ display: "flex", gap: 12, marginBottom: 15, paddingBottom: 15, borderBottom: i<legal.length-1?"1px solid #090909":"none" }}>
-                  <span style={{ color: "#181818", fontWeight: 700, flexShrink: 0, fontSize: 10, marginTop: 3 }}>§{i+1}</span>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: "#383838" }}>{d}</p>
+                  <span style={{ color: "#555", fontWeight: 700, flexShrink: 0, fontSize: 10, marginTop: 3 }}>§{i+1}</span>
+                  <p style={{ fontSize: 13, lineHeight: 1.8, color: "#aaa" }}>{d}</p>
                 </div>
               ))}
             </div>
@@ -1254,9 +1172,6 @@ function Faq({ nav }) {
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   CONTACT
-══════════════════════════════════════════════════════════ */
 function Contact() {
   useReveal();
   const [f, setF] = useState({ name:"", email:"", msg:"" });
@@ -1269,20 +1184,20 @@ function Contact() {
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div className="rv" style={{ marginBottom: 16 }}><span className="tag">Contact</span></div>
             <h1 className="rv">Get in touch.</h1>
-            <p className="rv" style={{ maxWidth: 320, margin: "14px auto 0", fontSize: 14, color: "#444" }}>Questions before enrolling? We reply within 24 hours.</p>
+            <p className="rv" style={{ maxWidth: 320, margin: "14px auto 0", fontSize: 14, color: "#aaa" }}>Questions before enrolling? We reply within 24 hours.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(270px,1fr))", gap: 16, maxWidth: 780, margin: "0 auto" }}>
             <div>
               {[[CONFIG.email, `mailto:${CONFIG.email}`, "Email"],[CONFIG.phone, `tel:${CONFIG.phone}`, "Phone"]].map(([v,h,l])=>(
                 <div key={l} className="dc rv" style={{ marginBottom: 12, padding: "22px 22px" }}>
-                  <div className="lbl" style={{ marginBottom: 7, color: "#222" }}>{l}</div>
+                  <div className="lbl" style={{ marginBottom: 7 }}>{l}</div>
                   <a href={h} style={{ color: "#fff", fontWeight: 500, fontSize: 14 }}>{v}</a>
                 </div>
               ))}
               <div className="dc rv" style={{ padding: "22px 22px" }}>
-                <div className="lbl" style={{ marginBottom: 14, color: "#222" }}>Social</div>
+                <div className="lbl" style={{ marginBottom: 14 }}>Social</div>
                 {[["Instagram","@apexholdings — Coming soon"],["LinkedIn","Apex Holdings — Coming soon"]].map(([l,h])=>(
-                  <div key={l} style={{ fontSize: 13, color: "#252525", marginBottom: 9 }}>{l}: {h}</div>
+                  <div key={l} style={{ fontSize: 13, color: "#888", marginBottom: 9 }}>{l}: {h}</div>
                 ))}
               </div>
             </div>
@@ -1291,11 +1206,11 @@ function Contact() {
                 <div style={{ textAlign: "center", padding: "24px 0" }}>
                   <div style={{ width: 50, height: 50, borderRadius: "50%", background: GD, border: `1px solid ${GB}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 18px", color: G, fontSize: 18 }}>+</div>
                   <h4 style={{ marginBottom: 9 }}>Message received.</h4>
-                  <p style={{ fontSize: 14, color: "#555" }}>We will reply to {f.email} within 24 hours.</p>
+                  <p style={{ fontSize: 14, color: "#aaa" }}>We will reply to {f.email} within 24 hours.</p>
                 </div>
               ) : (
                 <div>
-                  <h4 style={{ marginBottom: 18, color: "#2a2a2a", fontWeight: 500, fontSize: 13 }}>Send a message</h4>
+                  <h4 style={{ marginBottom: 18, color: "#aaa", fontWeight: 500, fontSize: 13 }}>Send a message</h4>
                   <div className="fg"><label>Name</label><input value={f.name} onChange={e=>set("name",e.target.value)} placeholder="Your name"/></div>
                   <div className="fg"><label>Email</label><input type="email" value={f.email} onChange={e=>set("email",e.target.value)} placeholder="you@example.com"/></div>
                   <div className="fg"><label>Message</label><textarea value={f.msg} onChange={e=>set("msg",e.target.value)} rows={5} placeholder="What would you like to know?"/></div>
@@ -1310,9 +1225,6 @@ function Contact() {
   );
 }
 
-/* ══════════════════════════════════════════════════════════
-   ROOT
-══════════════════════════════════════════════════════════ */
 export default function App() {
   const [page, setPage] = useState("home");
   const [loaded, setLoaded] = useState(false);
